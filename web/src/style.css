@@ -1,0 +1,97 @@
+html, body {
+    background-color: var(--default);
+}
+
+:root {
+    --default: #121213;
+    --failure: #3a3a3c;
+    --exists: #b59f3b;
+    --correct: #538d4e;
+    --awaiting: #00b2d2;
+    --wrong: #ad2626;
+}
+
+#game {
+    place-items: center;
+    display: grid;
+    width: 100%;
+    height: 700px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(5, auto);
+}
+
+.box {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--failure);
+    margin: 4px;
+    color: white;
+    text-transform: uppercase;
+    display: grid;
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+}
+
+.box.failure {
+    background-color: var(--failure);
+}
+
+.box.exists {
+    background-color: var(--exists);
+}
+
+.box.correct {
+    background-color: var(--correct);
+}
+
+.box.awaiting {
+    background-color: var(--awaiting);
+}
+
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flip {
+    0% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes wrong {
+    50% {
+        background-color: var(--wrong);
+    }
+}
+
+.box.wrong {
+    animation: wrong 0.5s ease;
+}
+
+.awaiting_animation {
+    animation: hide 0.5s ease;
+}
+
+.revealing_animation {
+    animation: flip 0.5s ease;
+}
