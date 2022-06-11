@@ -1,5 +1,6 @@
 html, body {
     background-color: var(--default);
+    text-align: center;
 }
 
 :root {
@@ -15,7 +16,7 @@ html, body {
     place-items: center;
     display: grid;
     width: 100%;
-    height: 700px;
+    height: 600px;
 }
 
 .grid {
@@ -94,4 +95,12 @@ html, body {
 
 .revealing_animation {
     animation: flip 0.5s ease;
+}
+
+h1 {
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    color: white;
+    font-weight: normal;
 }

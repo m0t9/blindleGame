@@ -444,7 +444,6 @@ function revealWord(row) {
                 }
             }
         }
-        
     }, animation_duration / 2)
 
     for (let col = 0; col < 5; col++) {
@@ -475,6 +474,16 @@ function highlightWrongWord() {
     }, animation_duration);
 }
 
+function showGameResult() {
+    const result = document.createElement('h1');
+    if (state.grid[6].join('') == state.secretWord) {
+        result.textContent = `Congratulations! You guessed the word!`.toLocaleUpperCase();
+    } else {
+        result.textContent = `You lose! The secret word was '${state.secretWord}'`.toLocaleUpperCase();
+    }
+    document.body.appendChild(result);    
+}
+
 function registerKeyboardEvents() {
     document.body.onkeydown = (e) => {
         const key = e.key;
@@ -487,11 +496,10 @@ function registerKeyboardEvents() {
                 if (isWordValid(word)) {
                     if (state.currentRow === 6) {
                         revealWord(6);
-                        setTimeout(() => {if (word != state.secretWord) {
-                            alert(`You lose! The word was '${state.secretWord}'`);
-                        }}, animation_duration)  
-                        state.currentRow++; 
-                        return;                     
+                        setTimeout(() => {
+                            showGameResult();
+                        }, animation_duration);
+                        state.currentRow++;                   
                     } else {
                         addWord();
                         state.currentCol = 0;
